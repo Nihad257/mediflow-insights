@@ -1,0 +1,11 @@
+department_id,department_name,type
+1,Emergency,Emergency
+2,Cardiology,Inpatient
+3,Orthopedics,Inpatient
+4,Neurology,Inpatient
+5,General Surgery,Inpatient
+6,ICU,ICU
+7,Maternity,Inpatient
+8,Pediatrics,Inpatient
+9,Oncology,Inpatient
+10,Rehabilitation,Inpatient
