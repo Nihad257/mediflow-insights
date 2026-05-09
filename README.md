@@ -5,17 +5,26 @@
 ![Python](https://img.shields.io/badge/Python-3.13-yellow?logo=python)
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
-An end‑to‑end analytics project that transforms synthetic hospital data into actionable operational insights using **MySQL** for data warehousing and **Power BI** for interactive dashboards.
+An end-to-end healthcare analytics project that transforms synthetic hospital data into actionable operational insights using **MySQL** for data warehousing and **Power BI** for interactive dashboards.
 
 ---
 
 ## 🏥 Business Problem
 
-Hospital managers lack a unified view of patient flow, discharge delays, and bed utilization. Data sits in silos — admissions, bed management, billing — with no way to see the full picture. This leads to overcrowding, long emergency wait times, delayed discharges, and suboptimal resource use.
+Hospital managers often lack a unified view of:
+
+- Patient admissions and discharges
+- Bed utilization across departments
+- Discharge delays
+- Operational bottlenecks
+
+Data exists in silos (admissions, bed management, billing), making it difficult to monitor hospital flow efficiently. This leads to overcrowding, long emergency wait times, delayed discharges, and suboptimal resource use.
+
+---
 
 ## 💡 Solution
 
-A star‑schema MySQL data warehouse combined with an interactive Power BI dashboard that tracks key operational KPIs, identifies bottlenecks, and supports data‑driven decision‑making by hospital operations managers.
+This project builds a **star-schema MySQL data warehouse** and connects it to a **Power BI dashboard** to monitor key hospital operational KPIs and identify bottlenecks in patient flow and discharge processes.
 
 ---
 
@@ -23,14 +32,14 @@ A star‑schema MySQL data warehouse combined with an interactive Power BI dashb
 
 | Page | What It Shows |
 |------|---------------|
-| **Executive Overview** | Total admissions, discharges, current inpatients, average length of stay, bed occupancy rate, admissions trend, department breakdown |
-| **Patient Flow** | Occupied beds by department, daily admissions vs discharges comparison |
-| **Discharge Delays** | Delay rate, delayed discharge count, breakdown by department and discharge destination |
-| **Financial** | Total charges, charges by department, revenue vs length of stay summary |
+| **Executive Overview** | Total admissions, discharges, current inpatients, ALOS, bed occupancy rate, admissions trend |
+| **Patient Flow** | Occupied beds by department, daily admissions vs discharges |
+| **Discharge Delays** | Delay rate, delayed discharge count, department-wise breakdown |
+| **Financial Overview** | Charges by department, revenue vs length of stay |
 
 ---
 
-## 📈 Key KPIs
+## 📈 Key KPIs Observed
 
 - **Total Admissions:** 5,000
 - **Average ER Wait Time:** 82.8 minutes
@@ -43,43 +52,107 @@ A star‑schema MySQL data warehouse combined with an interactive Power BI dashb
 
 ## ⚙️ Tech Stack
 
-- **MySQL 8.0** — Data warehouse (star schema: 5 dimension tables, 2 fact tables)
-- **Power BI Desktop** — DAX measures, interactive dashboard, data modeling
-- **Python 3.13** — Synthetic data generation (pandas, numpy)
-- **Git & GitHub** — Version control and portfolio
+| Tool | Purpose |
+|-----|---------|
+| **MySQL 8.0** | Star schema data warehouse (ETL + queries) |
+| **Power BI Desktop** | Data modeling, DAX measures, interactive dashboard |
+| **Python (pandas, numpy)** | Synthetic hospital data generation |
+| **Git & GitHub** | Version control and portfolio |
+
+---
+
+## 🗂️ Star Schema Design
+
+- **Fact Tables:** Admissions, Billing
+- **Dimension Tables:** Patients, Beds, Departments, Dates, Diagnosis
+
+This structure enables efficient analytical queries and dashboard performance.
 
 ---
 
 ## 📁 Repository Structure
 
-MediFlow-Insights/
-├── data/raw/ # 7 synthetic CSV files
+```
+mediflow-insights/
+├── data/raw/                  # Synthetic CSV data files
 ├── sql/
-│ ├── 02_etl_load.sql # Database setup + ETL (star schema creation)
-│ ├── 03_queries.sql # Beginner SQL queries
-│ ├── 04_queries.sql # Intermediate SQL queries
-│ └── 05_queries.sql # Advanced SQL queries (CTEs, window functions)
+│   ├── 02_etl_load.sql       # Database setup and ETL
+│   ├── 03_queries.sql        # Basic SQL queries
+│   ├── 04_queries.sql        # Intermediate SQL queries
+│   └── 05_queries.sql        # Advanced SQL queries
 ├── powerbi/
-│ └── MediFlow-Dashboard.pbix # Power BI dashboard file
-├── generate_data.py # Python script to generate synthetic data
+│   └── MediFlow-Dashboard.pbix
+├── generate_data.py          # Python script to generate data
 ├── .gitignore
 ├── LICENSE
 └── README.md
-
+```
 
 ---
 
 ## 🚀 How to Run This Project
 
-### 1. Generate the data
+### Step 1 — Generate Synthetic Data
+
 ```bash
 python generate_data.py
+```
 
-This creates 7 CSV files in data/raw/.
-
+This creates CSV files inside `data/raw/`.
 
 ---
 
-### Fix 2: Populate LICENSE
+### Step 2 — Create Database & Load Data (MySQL)
 
-Open `LICENSE`, delete everything, paste:
+Open MySQL and run:
+
+```sql
+source sql/02_etl_load.sql;
+```
+
+---
+
+### Step 3 — Explore SQL Queries
+
+Run:
+
+- `03_queries.sql` — Basic analysis
+- `04_queries.sql` — Intermediate joins & aggregations
+- `05_queries.sql` — Advanced KPIs
+
+---
+
+### Step 4 — Open Power BI Dashboard
+
+Open:
+
+```
+powerbi/MediFlow-Dashboard.pbix
+```
+
+Refresh the data connection if needed.
+
+---
+
+## 🎯 What This Project Demonstrates
+
+- Data warehousing using star schema
+- Writing analytical SQL queries (joins, aggregations, KPIs)
+- Building professional Power BI dashboards with DAX
+- Understanding hospital operational metrics
+- End-to-end analytics workflow from data generation → ETL → visualization
+
+---
+
+## 📌 Future Improvements
+
+- Use a real hospital dataset
+- Deploy dashboard to Power BI Service
+- Add automated ETL pipeline
+- Add data dictionary documentation
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
