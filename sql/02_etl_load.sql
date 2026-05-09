@@ -15,6 +15,7 @@ CREATE TABLE dim_date (
     month TINYINT,
     month_name VARCHAR(10),
     day_of_week TINYINT,
+   
     is_weekend TINYINT,
     quarter TINYINT,
     season VARCHAR(10)
