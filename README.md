@@ -42,11 +42,11 @@ This project builds a **star-schema MySQL data warehouse** and connects it to a 
 ## 📈 Key KPIs Observed
 
 - **Total Admissions:** 5,000
-- **Average ER Wait Time:** 82.8 minutes
+- **Average ER Wait Time:** 82 minutes
 - **Discharge Delay Rate:** 11.9% (583 delayed discharges)
 - **Average Length of Stay:** 5.57 days
 - **Bed Occupancy Rate:** 26% (snapshot)
-- **Readmission Rate:** ~7%
+- **Readmission Rate:** 11%
 
 ---
 
